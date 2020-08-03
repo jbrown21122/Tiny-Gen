@@ -1,0 +1,115 @@
+#!/bin/bash
+function running {
+ tput civis
+ while true
+        do 
+		tput sc
+		tput cup 0 56
+		tput setaf 2
+		tput bold
+                echo FETCHING DATA
+		tput sgr0
+		tput rc
+                sleep 2
+		tput sc
+                tput cup 0 56
+                tput el
+		tput rc
+                sleep 1
+         done
+}
+clear
+case $1 in
+ bh)
+	tput setaf 2
+	tput cup 0 0
+	echo BlackHole Real Time Monitor
+	running &
+	tcpdump -i ens32 port 2525 > /tmp/blackhole.log &
+	tail -f /tmp/blackhole.log
+ ;;
+ ep)
+		tput setaf 2
+		echo Endpoint RealTime Monitor
+		tput sgr0
+#		echo use '<ctrl+c> to exit'
+#		echo press Enter to continue
+		read reply
+		running &
+		tail -f /tmp/endpoint.log 2>/dev/null
+ ;;
+ web)
+		tput setaf 2
+                echo Web Alexa WGET RealTime Monitor
+		tput sgr0
+#                echo use '<ctrl+c> to exit'
+#                echo press Enter to continue
+#                read reply
+#		running &
+		tail -f /tmp/runit.log 2>/dev/null
+ ;;
+em)
+#export PROMPT_COMMAND='echo -ne "\033]0; EMAIL REAL TIME MONITOR\007"'
+                tput setaf 2
+                echo Email RealTime Monitor
+                tput sgr0
+#                echo use '<ctrl+c> to exit'
+#                echo press Enter to continue
+                read reply
+		running &
+                tail -f /tmp/email.out | grep -v STATUS 2>/dev/null
+;;
+ in)
+                tput setaf 2
+                echo Insider Threat RealTime Monitor
+                tput sgr0
+#                echo use '<ctrl+c> to exit'
+#                echo press Enter to continue
+                read reply
+		running &
+                tail -f /tmp/insider.log | grep -v STATUS 2>/dev/null
+;;
+ *)
+                echo "HMMM, I did not understand that. "
+                sleep 1
+                echo "Phoning home to Mommy"
+                sleep 2
+                echo atdt,,`cat /usr/local/tinygen/modem.txt`
+                sleep 3
+		echo Dial Tone
+		echo Dialing
+		sleep 1
+                echo RING
+                sleep 2
+                echo RING
+                sleep 2
+                echo RING
+                echo CONNECT
+                sleep 1
+                echo "dweee-dedede-dweedddeeedwe (Modem Tones)"
+                sleep 2
+                echo silence
+                sleep 2
+                echo "She says it sounds like whales reproducing"
+		sleep 2
+		echo "Jonesie says default to WEB"
+		echo "going with Jonesie"
+                sleep 4
+		echo
+		echo
+		echo I entered a phone number for that? you ask
+		echo Boy Jim, you sure went a long way for that joke \:\-\)
+		echo hope you enjoyed the Red October reference
+		sleep 5
+
+		clear
+		tput setaf 2
+                echo Web Alexa WGET RealTime Monitor
+		tput sgr0
+#                echo use '<ctrl+c> to exit'
+#                echo press Enter to continue
+#                read reply
+		#running &
+                tail -f /tmp/runit.log 2>/dev/null
+;;
+esac
