@@ -1,4 +1,4 @@
-wget -O/tmp/tg_new.tgz https://github.com/jbrown21122/Tiny-Gen/raw/master/tg_majestic.tgz
+wget -O/tmp/tg_new.tgz https://github.com/jbrown21122/Tiny-Gen/raw/master/Tiny-Gen-Cleaned_Go4.tar.z 
 mkdir /usr/local/tinygen
 cd /usr/local/tinygen
 cp /tmp/tg_new.tgz .
