@@ -9,7 +9,7 @@ IP=`ip addr | grep inet | grep eth0 | awk '{print $2}' | sed s'|/24||g'`
 #IP=192.168.122.22
 
 #PORT FOR WEB ACCESS
-echo What port should I use? (4200 default)
+echo "What port should I use? (4200 default)"
 read PORT
 	if [ "$PORT" = "" ]
 		then
