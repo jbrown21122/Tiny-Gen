@@ -40,7 +40,7 @@ read reply
 #see if it is running
 			echo "Checking to see if shellinabox is running and listening"
 			sudo netstat -nap | grep shellinabox | grep 4200 > /dev/null
-				if { "$?" = "0" ]
+				if [ "$?" = "0" ]
 					then
 						echo RUNNING
 						echo "Open a browser that has access to $IP"
