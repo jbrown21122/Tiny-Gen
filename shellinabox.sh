@@ -35,7 +35,7 @@ read reply
 			echo "sudo /usr/local/tinygen/tgcc" >> /home/$user/.bashrc
 				if [ "$PORT" != "4200" ]
 					then
-					sed -i s'/PORT=4200/PORT=$PORT/g' /etc/sysconfig/shellinaboxd
+					sed -i s"/PORT=4200/PORT=$PORT/g" /etc/sysconfig/shellinaboxd
 				fi
 			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|g' /etc/sysconfig/shellinaboxd
 
@@ -45,7 +45,7 @@ read reply
 			clear
 #see if it is running
 			echo "Checking to see if shellinabox is running and listening"
-			sudo netstat -nap | grep shellinabox | grep 4200 > /dev/null
+			sudo netstat -nap | grep shellinabox | grep $PORT > /dev/null
 				if [ "$?" = "0" ]
 					then
 						echo RUNNING
