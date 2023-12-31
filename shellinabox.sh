@@ -20,13 +20,13 @@ read reply
 		then
 			echo "enter tgcc user to add"
 			read user
-			usermod -d /usr/local/tinygen $user
 #Install package shellinabox
 			yum install epel-release -y
 			yum --enablerepo=epel install shellinabox -y
 #create user and set startup and permissions
 			useradd $user
 			sudo usermod -aG wheel $user
+			sudo passwd $user
 			echo "sudo /usr/local/tinygen/tgcc" >> /home/$user/.bashrc
 				if [ "$PORT" != "4200" ]
 					then
