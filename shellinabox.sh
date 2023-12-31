@@ -31,8 +31,9 @@ read reply
 				if [ "$PORT" != "4200" ]
 					then
 					sed -i s'/PORT=4200/PORT=$PORT/g' /etc/sysconfig/shellinaboxd
-
 				fi
+			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|/g' /etc/sysconfig/shellinaboxd
+
 #Start shellinabox
 			systemctl start shellinaboxd
 			systemctl enable shellinaboxd
