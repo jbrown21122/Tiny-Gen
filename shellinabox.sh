@@ -9,7 +9,12 @@ IP=`ip addr | grep inet | grep eth0 | awk '{print $2}' | sed s'|/24||g'`
 #IP=192.168.122.22
 
 #PORT FOR WEB ACCESS
-PORT=4200
+echo What port should I use? (4200 default)
+read PORT
+	if [ "$PORT" = "" ]
+		then
+			PORT=4200
+	fi
 
 #DO NOT CHANGE ANYTHING BELOW THIS LINE
 clear
@@ -32,7 +37,7 @@ read reply
 					then
 					sed -i s'/PORT=4200/PORT=$PORT/g' /etc/sysconfig/shellinaboxd
 				fi
-			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|/g' /etc/sysconfig/shellinaboxd
+			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|g' /etc/sysconfig/shellinaboxd
 
 #Start shellinabox
 			systemctl start shellinaboxd
