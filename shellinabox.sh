@@ -8,13 +8,7 @@ IP=`ip addr | grep inet | grep eth0 | awk '{print $2}' | sed s'|/24||g'`
 #to manualy set an IP, uncomment the line below and enter your IP
 #IP=192.168.122.22
 
-#PORT FOR WEB ACCESS
-echo "What port should I use? (4200 default)"
-read PORT
-	if [ "$PORT" = "" ]
-		then
-			PORT=4200
-	fi
+
 
 #DO NOT CHANGE ANYTHING BELOW THIS LINE
 clear
@@ -23,11 +17,15 @@ echo 'y/n'
 read reply
 	if [ "$reply" = "y" ]
 		then
+		#PORT FOR WEB ACCESS
+			echo "What port should I use for Web Connection? (4200 default)"
+			read PORT
+				if [ "$PORT" = "" ]
+					then
+						PORT=4200
+				fi
 			echo "enter tgcc user to add"
 			read user
-#Install package shellinabox
-			yum install epel-release -y
-			yum --enablerepo=epel install shellinabox -y
 #create user and set startup and permissions
 			useradd $user
 			sudo usermod -aG wheel $user
@@ -38,7 +36,9 @@ read reply
 					sed -i s"/PORT=4200/PORT=$PORT/g" /etc/sysconfig/shellinaboxd
 				fi
 			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|g' /etc/sysconfig/shellinaboxd
-
+#Install package shellinabox
+			yum install epel-release -y
+			yum --enablerepo=epel install shellinabox -y
 #Start shellinabox
 			systemctl start shellinaboxd
 			systemctl enable shellinaboxd
