@@ -20,9 +20,10 @@ read reply
 		then
 			echo "enter tgcc user to add"
 			read user
+			usermod -d /usr/local/tinygen $user
 #Install package shellinabox
 			yum install epel-release -y
-			yum --enablerepo=epel install shellinabox
+			yum --enablerepo=epel install shellinabox -y
 #create user and set startup and permissions
 			useradd $user
 			sudo usermod -aG wheel $user
@@ -35,13 +36,14 @@ read reply
 #Start shellinabox
 			systemctl start shellinaboxd
 			systemctl enable shellinaboxd
+			clear
 #see if it is running
 			echo "Checking to see if shellinabox is running and listening"
 			sudo netstat -nap | grep shellinabox | grep 4200 > /dev/null
 				if { "$?" = "0" ]
 					then
 						echo RUNNING
-						echo "Open a browser that has access to $IP
+						echo "Open a browser that has access to $IP"
 						echo Navigate to https://$IP:$PORT
 						echo log in as $user
 						echo use $user password for sudo password
