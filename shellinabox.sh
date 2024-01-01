@@ -31,14 +31,15 @@ read reply
 			sudo usermod -aG wheel $user
 			sudo passwd $user
 			echo "sudo /usr/local/tinygen/tgcc" >> /home/$user/.bashrc
-				if [ "$PORT" != "4200" ]
+				
+#Install and configure shellinabox
+			yum install epel-release -y
+			yum --enablerepo=epel install shellinabox -y
+			if [ "$PORT" != "4200" ]
 					then
 					sed -i s"/PORT=4200/PORT=$PORT/g" /etc/sysconfig/shellinaboxd
 				fi
 			sed -i s'|--disable|--user-css Normal:+white-on-black.css --disable|g' /etc/sysconfig/shellinaboxd
-#Install package shellinabox
-			yum install epel-release -y
-			yum --enablerepo=epel install shellinabox -y
 #Start shellinabox
 			systemctl start shellinaboxd
 			systemctl enable shellinaboxd
