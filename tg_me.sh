@@ -16,7 +16,7 @@ mv enter /usr/local/tinygen/.enter
 cp /usr/local/tinygen/AlexaWget.CentOS.sh /usr/local/tinygen/AlexaWget.CentOS.sh.Alexa
 mv /tmp/patch/AlexaWget.CentOS.sh /usr/local/tinygen/AlexaWget.CentOS.sh
 mkdir /tmp/urls
-sed -i s'|/etc/profile.d/pi.logo/|/usr/local/tinygen/.curry_wurst|g' /usr/local/tinygen/new_sasan
+sed -i s'|/etc/profile.d/pi.logo|/usr/local/tinygen/.curry_wurst|g' /usr/local/tinygen/new_sasan
 sed -i s'|Pgcc|tgcc|g' /usr/local/tinygen/new_sasan
 sed -i s'|PiNY|TINY|g' /usr/local/tinygen/new_sasan
 #latter fixes 1/1/2024
