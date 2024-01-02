@@ -20,4 +20,4 @@ sed -i s'|/etc/profile.d/pi.logo/|/usr/local/tinygen/.curry_wurst|g' /usr/local/
 sed -i s'|Pgcc|tgcc|g' /usr/local/tinygen/new_sasan
 sed -i s'|PiNY|TINY|g' /usr/local/tinygen/new_sasan
 mv /usr/local/tinygen/.sasan.sh /usr/local/tinygen/.sasan.bak
-mv /usr/local/tinygen/new_sasan /usr/local.tinygen/.sasan.sh
+mv /usr/local/tinygen/new_sasan /usr/local/tinygen/.sasan.sh
