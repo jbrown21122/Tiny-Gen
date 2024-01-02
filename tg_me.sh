@@ -22,3 +22,5 @@ sed -i s'|PiNY|TINY|g' /usr/local/tinygen/new_sasan
 #latter fixes 1/1/2024
 mv /usr/local/tinygen/.sasan.sh /usr/local/tinygen/.sasan.bak
 mv /usr/local/tinygen/new_sasan /usr/local/tinygen/.sasan.sh
+chmod +x /usr/local/tinygen/.sasan.sh
+sed -i s'|wlan0|eth0|g' /usr/local/tinygen/.sasan.sh
